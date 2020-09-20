@@ -1,107 +1,42 @@
 
-$(document).ready(function(){
-        //var is_valid ;
-        $('#password, #cpassword').on('keyup', function () {
-        if ($('#password').val() != '' && $('#cpassword').val() != '' && $('#password').val() == $('#cpassword').val()) {
-          //$(".singbtn").attr("disabled",false);
-         
-          $('#cPwdInvalid').hide();
-          $('#cPwdValid').html('Valid').css('color', 'green');
-         
-        } else {
-          //$(".singbtn").attr("disabled",true);
-         
-          $('#cPwdInvalid').show();
-          $('#cPwdInvalid').html('Password does not match').css('color', 'red');
-         
-          }
-      });
+$('#contactForm').submit(function(e){
 
-     let currForm1 = document.getElementById('signUp');
-        // Validate on submit:
-        currForm1.addEventListener('submit', function(event) {
-          if (currForm1.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          
-          }
-          
-          currForm1.classList.add('was-validated');
-        }, false);
-        // Validate on input:
-        currForm1.querySelectorAll('.form-control').forEach(input => {
-          input.addEventListener(('input'), () => {
-            if (input.checkValidity()) {
-              input.classList.remove('is-invalid')
-              input.classList.add('is-valid');
-               
-            } else {
+e.preventDefault();
 
-              input.classList.remove('is-valid')
-              input.classList.add('is-invalid');
-            }
-            var is_valid = $('.form-control').length === $('.form-control.is-valid').length;
-            //$(".singbtn").attr("disabled", !is_valid);
+var data = $(this).serializeArray();
 
-
-          });
-        });
-
-$('#signUp').submit(function(e){
-
-  e.preventDefault();
-
-if (currForm1.checkValidity() ===true) {
- 
- // var data = $('#signUp').serialize();
-var firstname = $('#firstname').val();
-var lastname = $('#lastname').val();
-var code = $('#code').val();
-var contact = $('#number').val();
-var number = code+contact;
-var email = $('#email').val();
-var password = $('#password').val();
-
-var data ={'firstname':firstname,'lastname':lastname,'number':number,'email':email,'password':password};
-
-data = JSON.stringify(data);
-
-   
 $.ajax({
    
   method: 'POST',
-   url: '/getRegistered',
-   headers: {
-        'Authorization':'Basic YWRtaW46YWRtaW4xMjM=',
-        'Content-Type':'application/json',
-    },
+   url: '/insertContactDetails',
     dataType: 'json',
     data:data,
     success: function(data){
 
-
-      if(data.state ==1){
-        //$('#signUp')[0].reset();
-        $('#myModal').modal('toggle');
+      if(data.status == 1){
+        
+        $('#contactForm')[0].reset();
+        
+        $('.form_submit_message').html('<p class="text-success text-center my-2">'+data.message+'</p>');
+      
       }
       
-      if(data.state ==0){
-      $('.display_msg').html('<p class="alert alert-danger">'+data.message+'</p>');
+      if(data.status ==0){
+      $('.form_submit_message').html('<p class="alert alert-danger text-center my-2">'+data.message+'</p>');
       }
-      else{
-        $('.display_msg').html('');
-      }
+
+
     }
+
 
   });
 
-}
 
 });
 
 
 
-$('.input-group-append').click(function(){
+/*$('.input-group-append').click(function(){
 
 var el = $(this);
 var getField = el.prev().attr('id');
@@ -122,7 +57,7 @@ $(this).find('i').addClass('fa-eye-slash');
 
 }
 });
-});
+});*/
 
 
 /*{   "name":

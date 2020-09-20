@@ -1,6 +1,9 @@
-	<script src="<?= base_url('assets/js/bootstrap_jquery.js')?>"></script>
-	<script src="<?= base_url('assets/js/popover.js')?>"></script>
-	<script src="<?= base_url('assets/js/bootstrap.js')?>"></script>
-
-</body>
-</html>
+<footer>
+	<div class="footer-wrapper">
+		<div class="container">
+			<div class="footer-content">
+				<p class="text-center mb-0 p-3">All rights reserved by clickTab Digital</p>
+			</div>
+		</div>
+	</div>
+</footer>

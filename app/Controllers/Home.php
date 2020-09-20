@@ -10,79 +10,29 @@ class Home extends BaseController
 	protected $dd;
 	public function index()
 		{
-		$data =['title' => 'Register'];
-		return view('register' , $data);
+		$data =['title' => 'Click Digital'];
+		return view('index' , $data);
+	}
+	
+	public function insertContactDetails(){
+
+		$dataToInsert=[
+			'name' => $this->request->getPost('name'),
+			'contact' => $this->request->getPost('contactNumber'),
+			'email' => $this->request->getPost('email'),
+			'message' => $this->request->getPost('message'),
+
+		];
+
+		$this->db->table('contactQueries')->insert($dataToInsert);
+		
+		if($this->db->insertID()){
+
+		$returnedData =['status'=>1 ,'message' =>'Your query has been submitted , soon we will contact you.'];
+		}else{
+			$returnedData =['status'=>0 ,'message' =>'Your query has not been submitted , Some server error.'];
+		}
+		return json_encode($returnedData);
 	}
 
-	public function getRegistered(){
-		
-		//Accessing private key from headers
-		$data = $this->request->getHeaders('header');
-		$this->Auth = $data['Authorization'];
-		
-		//exclude authorized key
-		$exploedData = explode(':' , $this->Auth);
-		//user & password details
-		$fetched = substr($exploedData[1], 6);
-		
-		$credentials = base64_decode($fetched);
-		$credentials = explode(':' , $credentials);
-		
-		if($credentials[0] =='admin' AND $credentials[1]=="admin123"){
-
-			//get data from ajax request 
-			$requestBody=$this->request->getBody('password');
-			//decode json object into php array
-			$requestBody = json_decode($requestBody , true);
-
-			if($requestBody['firstname'] !='' AND $requestBody['email'] !='' AND $requestBody['number'] !='' AND $requestBody['password'] !=''){
-
-				//check email already exist or not	
-				$checkExist = ['email'=>$requestBody['email']];
-				//define object of Users Model Class  
-				$Users = new UsersModel();
-				$isExist = $this->db->table('users')->where($checkExist)->get();
-				$isExist = $isExist->getResult();				
-					
-				if(count($isExist) < 1){
-
-					$toInsert = [
-					'firstname'=> $requestBody['firstname'],
-					'lastname'=> $requestBody['lastname'],
-					'contact'=> $requestBody['number'],
-					'email'=> $requestBody['email'],
-					'password' => password_hash($requestBody['password'], PASSWORD_DEFAULT)
-					];
-		
-					$isInserted = $Users->insert($toInsert);
-
-					if($isInserted){
-
-						$response =['state'=>1 ,'message'=>'You are registered successfully.'];
-						return json_encode($response);
-					}else{
-						$response =['state'=>0 ,'message'=>'Oops , Some Server Error..'];
-						return json_encode($response);
-					}//Server Error Check End
-
-				}else{
-
-					$response =['state'=>0,'message'=>'Email Already Exist'];
-					return json_encode($response);
-				}//Email Already exit check end
-
-			}else{
-
-				$response =['state'=>0,'message'=>'Some fields are missing'];
-				return json_encode($response);
-			}//Missing field check end
-			
-		}else{
-			$response =['state'=>0 ,'message'=>'Un-Authorized User'];
-			return json_encode($response);
-		}//Authorization check end
-		
-	
-	
-}
 }

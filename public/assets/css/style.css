@@ -1,282 +1,188 @@
 body{
- font-family: 'Roboto', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+.header-logo h2 ,.carousel-inner h2 , .team-wrapper h2 ,.counter h2,.services-wrapper h2,.contact-wrapper h2{
+font-family: 'Lobster', cursive;
+}
+.navbar{
+position: absolute;
+/* top: 28%; */
+z-index: 999;
+width: 100%;
+padding:0px !important;
+background: rgb(128 128 128 / 72%) !important
 }
 
-.sliderSection 
-{
-  background: #f9f9f9;
-  padding-left: 50px ;
-  height: 100vh;
-  padding-right: 20px ;
-   
-  }
-  .carousel{
-    top:30%;
-  }
-
-  .carousel-inner img{
-    height: 250px;
-    cursor:pointer;
-  }
-  .carousel-indicators li{
-    background: teal;
-  }
-  .carousel-indicators .active{
-    background: #FF7143;
-  }
-  .carousel-indicators li:hover{
- background:#FF7143; 
+.navbar-nav .active-link {
+background:#1f3138 !important;
 }
-.carousel-indicators{
-  bottom:-53px;
+.navbar-nav .nav-item {
+padding: 0.4rem 1rem !important;
 }
-  .rightCol , .leftCol{
-    padding-right: 0px !important;
-    padding-left: 0px !important;
-
-  }
-.signUpSection{
- 
-  margin: 75px auto;
-  padding-right:6vw;
-  padding-left:6vw ;
-
+.navbar-nav .nav-link{
+color:white !important;
 }
 
-
-.form-control.no-validate:valid {
-    border-color: $input-border-color;
-    padding: $input-padding-x;
-    background: $input-bg;
+/*slides*/
+.slideshow-container{
+  position: relative;
 }
-.custom-select.is-valid, .form-control.is-valid, .was-validated .custom-select:valid, .was-validated .form-control:valid{
-  border-color: #ced4da;
+.overlay-slider{
+position: absolute;
+top: 0px;
+bottom: 0px;
+left: 0px;
+right: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: .6;
+  transition: .5s ease;
+  background-color: rgb(19 16 16 / 67%);
 }
-.custom-select.is-invalid:focus, .form-control.is-invalid:focus, .was-validated .custom-select:invalid:focus, .was-validated .form-control:invalid:focus{
-  box-shadow: none; 
+.mySlides img{
+width: 100%;
+height: 95vh;
+outline: none;
 }
-.custom-select.is-valid:focus, .form-control.is-valid:focus, .was-validated .custom-select:valid:focus, .was-validated .form-control:valid:focus{
-  box-shadow: none;
+.slick-next{
+  right: 5%;
 }
-.signUpForm input,.signUpForm  select{
-
-border-top:none;
-padding-left: 0px;
-border-radius: 0px;
-border-right:none;
-border-left:none;
-transition: 0.3s all ease-in;
-
+.slick-prev{
+  left: 2%;
 }
-.signUpForm  select option{
-  transition: 0.3s all ease-in;
+.slick-prev, .slick-next{
+  z-index: 99;
 }
-.form-control:focus{
-  border-color:#FF7143;
-  box-shadow :0 0 0 #fff;
-}
-.signUpForm select option >.form-control:focus{
-  border-color:#FF7143;
-  box-shadow :0 0 0 #fff;
-}
-
-.singbtn{
-  font-weight: bold;
-  border-radius: 30px;
-  padding: 5px 25px;
-  background: #FF7143;
-  border: none;
-}
-.singbtn:hover,.singbtn:focus,.singbtn:active{
-  background: teal; 
-  box-shadow: none;
-}
-.signUpHeading h1{
-  font-size: 3vw;
-  font-family:'Bebas Neue', cursive;
-  color: #FF7143; 
-
-}
-.lowerContent a{
-  font-size: 13px;
-  color:#FF7143; 
-}
- 
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.slick-next:before ,.slick-prev:before {
+    content: '→';
+    background: black;
+    padding: 1rem;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-/* Bob */
-@-webkit-keyframes hvr-bob {
-  0% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-  50% {
-    -webkit-transform: translateY(-4px);
-    transform: translateY(-4px);
-  }
-  100% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-}
-@keyframes hvr-bob {
-  0% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-  50% {
-    -webkit-transform: translateY(-4px);
-    transform: translateY(-4px);
-  }
-  100% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-}
-@-webkit-keyframes hvr-bob-float {
-  100% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-}
-@keyframes hvr-bob-float {
-  100% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-}
-.hvr-bob {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-.hvr-bob:hover, .hvr-bob:focus, .hvr-bob:active {
-  -webkit-animation-name: hvr-bob-float, hvr-bob;
-  animation-name: hvr-bob-float, hvr-bob;
-  -webkit-animation-duration: .3s, 1.5s;
-  animation-duration: .3s, 1.5s;
-  -webkit-animation-delay: 0s, .3s;
-  animation-delay: 0s, .3s;
-  -webkit-animation-timing-function: ease-out, ease-in-out;
-  animation-timing-function: ease-out, ease-in-out;
-  -webkit-animation-iteration-count: 1, infinite;
-  animation-iteration-count: 1, infinite;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-direction: normal, alternate;
-  animation-direction: normal, alternate;
-}
-.modal-content{
-  border-radius: 0px;
-  border:none;
-}
-.modal-header{
-border:none;
+/*team wrapper*/
+.team-wrapper header{
 text-align: center;
+}
+.team-image img{
+max-height: 320px;
+max-width: 320px;
+}
+.team-content h4{
+font-family: 'Bebas Neue', cursive;
+text-align :center;
+}
+.team-border  {
+display: block;
+border-bottom: 1px solid black;
+width: 148px;
+margin: auto;
+}
+.team-content p{
+text-align: justify;
+font-size: 14px;
+}
+/*counter section*/
+.counter-wrapper{
+background: url('../images/counter-section.jpg');
+background-position: bottom;
+}
+.counter-inner-wrapper{
+padding: 4rem;
+background: rgb(0 0 0 / 18%);
+}
+.counter{
+text-align:center;
+color: white;
+}
+.counter-text{
+color:white;
+font-weight: bold;
+font-size:17px;
+text-align: center;
+text-transform: uppercase;
+}
+/*Services*/
+.services-wrapper{
+  text-align: center;
+}
+.single-service{
+  padding:1rem;
+  background: #f9f9f9;
+  margin: 4rem auto;
+  cursor: pointer;
+}
+.single-service:hover{
+ 
+ background:#eee;
+
+}
+.services-icon{
+margin:2rem auto;
+transition: 0.3s all ease-in;
+}
+
+.services-icon img{
+height: 50px;
+width: auto;
 
 }
 
-.modal-body p{
-  font-family:'Bebas Neue', cursive;
-  color:#FF7143;
-  font-size: 20px;
-  text-align:center;
-  margin-bottom: 2rem;
-
-}
-/*.display_msg{
-  color:red;
-  font-weight: bold;
-  font-size:14px;
-}*/
-
-.checkmark__circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #FF7143;
-  fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+.services-name h3{
+font-family: 'Bebas Neue', cursive;
+font-size: 23px;
 }
 
-.checkmark {
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  margin: 0% 39% 7%;
-  box-shadow: inset 0px 0px 0px #FF7143;
-  animation: fill .5s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+/* contact section*/
+.contact-wrapper{
+  background: #1f3138;
+  padding: 1rem;
+  margin:1rem auto 0px;
+  border-bottom: 1px solid gray; 
 }
-
-.checkmark__check {
-  transform-origin: 60% 6s0%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+.contact-container{
+  width: 50%;
+  margin:1rem auto;
 }
-
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
+.input-field{
+  border-top:0px;
+  border-left:0px;
+  border-right:0px;
+  border-bottom:1px solid gray;
+  background: transparent;
+  width: 100%;
+  transition: 0.3s all ease-in;
+  padding:0.2rem;
+  margin:1rem;
+  color:gray;
 }
-@keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.2, 1.1, 1);
-  }
+.input-field:focus{
+ box-shadow: none;
+    outline: none;
+    border-bottom: 1px solid white;
 }
-@keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 50px #FF7143;
-  }
+.contact-wrapper textarea{
+  resize: none;
+  color:gray;
 }
-
-.input-group-text {
-background: transparent;
-border-top: 0px;
-border-right: 0px;
+.contact-submit{
+  border:none;
+  background:#89553b;
+  border-radius: 0px;
+  padding: 0.4rem 1rem;
+  margin:1rem;
 }
-@media only screen and (max-width: 768px){
- .sliderSection 
-{
-  
-  padding-left: 50px ;
-  height: 50vh;
-  padding-right: 20px ;
-   
-  }
-  .carousel{
-    top:10%;
-  }
-
-  .carousel-inner img{
-    height: 200px;
-    cursor:pointer;
-  }
-  .signUpHeading h1{
-  font-size: 5vw;
-
+.contact-wrapper h2{
+  color:white;
+}
+.contact-wrapper p{
+  color:gray;
+}
+/*footer*/
+.footer-wrapper{
+ background: #1f3138;
+ color:white;
 
 }
 
-}
+
+
